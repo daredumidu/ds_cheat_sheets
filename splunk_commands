@@ -1,0 +1,23 @@
+command need "|" to add infront
+
+source="/var/log/weblogs/*" host="ip-172-31-16-90" sourcetype="access_combined"
+
+action=purchase | stats count by status | rename count as "Number of Events"
+
+sourcetype=*
+
+sourcetype=* status!=200| timechart count by useragent limit=5 useother=false
+
+sourcetype=* action=purchase | timechart count span=5m | predict count future_timespan=24
+
+| inputlookup product_codes.csv
+
+sourcetype=* action=purchase status!=200 | lookup product_codes.csv product_id | timechart sum(product_price)
+
+sourcetype=* action=purchase status!=200 | lookup product_codes.csv product_id | timechart sum(product_price) by product_name
+
+sourcetype=* | iplocation clientip | search Country!="United States"
+
+sourcetype=* | iplocation clientip | search Country!="United States" | geostats count by City
+
+==========_end_of_note_==========
