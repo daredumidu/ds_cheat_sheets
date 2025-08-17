@@ -1,0 +1,8 @@
+
+test-netconnection gridwebproxy.grid.ie -port 8080
+
+Invoke-WebRequest -proxy http://gridwebproxy.grid.ie:8080 -Uri https://scp5.illum.io -Verbose
+
+Invoke-WebRequest -Uri https://scp5.illum.io -Verbose
+
+ 
