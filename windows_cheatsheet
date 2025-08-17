@@ -165,6 +165,20 @@ GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}
 https://www.techrepublic.com/article/how-to-use-god-mode-in-windows-10/?ftag=TREe09998f&bhid=27663049538559910110089906359382
 - - - - - - - - - - - - - - - - -
 
+disable remote file access
+
+regedit
+HKEY_LOCAL_MACHINE
+SYSTEM
+CurrentControlSet
+Services
+LanmanServer
+Parameters
+New, DWORD (32-bit) Value
+Type AutoShareWks and press Enter (default value of 0)
+Restart Windows.
+- - - - - - - - - - - - - - - - -
+
 http://unix.stackexchange.com/questions/146427/can-i-change-uuid-for-network-interface-in-ifcfg-eth-using-uuidgen
 
 http://www.esqsoft.com/examples/troubleshooting-http-using-telnet.htm
