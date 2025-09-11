@@ -1,0 +1,27 @@
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])
+
+coloum 1:
+raw 1: =VLOOKUP(A2,Sheet2!$A$1:$E$56,1,FALSE)
+raw 2: =VLOOKUP(A3,Sheet2!$A$1:$E$56,1,FALSE)
+
+coloum 2:
+raw 1: =VLOOKUP(A2,Sheet2!$A$1:$E$56,2,FALSE)
+raw 2: =VLOOKUP(A3,Sheet2!$A$1:$E$56,2,FALSE)
+
+
+lookup_value, - source value to lookup
+table_array, - destination value
+col_index_num, - coloum number of destination value table
+[range_lookup]
+
+
+Locking References with $
+A2 → relative (changes when copied)
+$A$2 → absolute (never changes)
+A$2 → row fixed, column changes
+$A2 → column fixed, row changes
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
