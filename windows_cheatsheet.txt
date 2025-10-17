@@ -33,6 +33,12 @@ folder hide
 C:\>attrib +r +a +s +h test
 - - - - - - - - - - - - - - - 
 
+stegonography
+
+copy /b pic1.jpg+gcs.txt pic2.jpg
+copy /b pic1.jpg+gcs.7z pic2.jpg
+- - - - - - - - - - - - - - - 
+
 Show wifi password
 
 netsh wlan show profile
