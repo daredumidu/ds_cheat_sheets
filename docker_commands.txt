@@ -1,0 +1,30 @@
+https://hub.docker.com/_/httpd
+
+
+docker images			check docker images
+docker ps			check running docker containers
+docker ps -a			check previousely run docker containers
+
+
+docker build -t dumidu1	.	build docker image
+
+docker save dumidu1 > dumidu1.tar	save a docker image
+docker load < dumidu1.tar		load a docker image
+
+docker run hello-world			run a docker image
+docker run -d -p 8080:80 dumidu1	
+
+docker stop dumidu1		stop a running container
+docker start dumidu1		start a stopped container
+
+docker rm [image_name]		remove running container
+docker rmi dumidu1		remove docker image
+docker rmi --force dumidu1	forcefully remove docker image
+
+
+- - - - - dockerfile content - - - - - used to build the image
+
+FROM httpd:2.4.65-alpine3.22
+COPY ./public-html/ /usr/local/apache2/htdocs/
+- - - - - - - - - - - - - - - - - - - - 
+
