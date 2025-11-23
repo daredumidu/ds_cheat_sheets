@@ -1,30 +1,50 @@
+https://stackoverflow.com/questions/54156489/docker-hello-world-container-not-visible-with-docker-ps-command
+
+https://www.youtube.com/watch?v=SnSH8Ht3MIc
+
+
+docker images			          check docker images
+docker ps			              check running docker containers
+docker ps -a			          check previousely run docker containers
+docker stats			          stats for running containers
+
+docker save dumidu1 > dumidu1.tar	                        save a docker image
+docker load < dumidu1.tar		                              load a docker image
+
+docker run hello-world			                              run a docker image
+
+docker stop [container-name]	                            stop a running container
+docker start [image-name]	                                start a stopped container
+
+docker rm [container_name]	                              remove running container
+docker rmi dumidu1		                                    remove docker image
+docker rmi --force dumidu1	                              forcefully remove docker image
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 https://hub.docker.com/_/httpd
-
-
-docker images			check docker images
-docker ps			check running docker containers
-docker ps -a			check previousely run docker containers
-
-
-docker build -t dumidu1	.	build docker image
-
-docker save dumidu1 > dumidu1.tar	save a docker image
-docker load < dumidu1.tar		load a docker image
-
-docker run hello-world			run a docker image
-docker run -d -p 8080:80 dumidu1	
-
-docker stop dumidu1		stop a running container
-docker start dumidu1		start a stopped container
-
-docker rm [image_name]		remove running container
-docker rmi dumidu1		remove docker image
-docker rmi --force dumidu1	forcefully remove docker image
-
-
 - - - - - dockerfile content - - - - - used to build the image
-
 FROM httpd:2.4.65-alpine3.22
 COPY ./public-html/ /usr/local/apache2/htdocs/
 - - - - - - - - - - - - - - - - - - - - 
 
+docker build -t [image-name] .
+docker build -t dumidu1	.		                                          build docker image
+
+docker run --name [container-name] -d -p 8080:80 [image-name]
+docker run --name dumidu-apache -d -p 8080:80 dumidu1	                run a docker image. change port on left
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+https://hub.docker.com/_/nginx
+- - - - - dockerfile content - - - - - used to build the image
+FROM nginx:1.29.3-alpine3.22
+COPY ./static-html-directory /usr/share/nginx/html
+- - - - - - - - - - - - - - - - - - - - 
+
+docker build -t dumidu1	.
+
+docker run --name dumidu-nginx -d -p 8080:80 dumidu1
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
