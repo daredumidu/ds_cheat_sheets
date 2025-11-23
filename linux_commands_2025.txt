@@ -198,7 +198,14 @@ docker search <image>
 
 # iptables –A INPUT –S 172.17.9.66 –j DROP
 # iptables –p tcp –m tcp –dport 25 –s [ip add.] –j ACCEPT
+
+Add the port to the public zone permanently:
+sudo firewall-cmd --permanent --zone=public --add-port=<port_number>/tcp
+
+Reload the firewall to apply the changes:
+sudo firewall-cmd --reload 
 - - - - - - - - - -
+
 # crontab –l 			list all schedules
 # crontab –l –u [user name]	list all schedules specific to user
 # crontab –l –u admin
