@@ -186,10 +186,6 @@ Networking
 
 python3 -V
 - - - - - - - - - -
-docker info
-docker images
-docker search <image>
-- - - - - - - - - -
 
 # iptables –L 			view firewall rules
 # iptables –L –n 		view firewall rules with numerical values
