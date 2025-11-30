@@ -130,16 +130,24 @@ xss
 - - - - - - - - - - - - - - - - -
 
 use putty for socks5 proxy
+- session tab
+- - ip address of the vm
+- - port: 22
+- - connection type: SSH
+- connection --> SSH --> tunnels tab
+- - source port: 1987
+- - select "Dynamic" --> add --> open
 
-putty --> type IP --> 
-Connection --> SSH --> Tunnels --> select "Dynamic" --> source port "1987" --> click "add" --> open.
+firefox settings --> network settings
+- select "manual proxy config"
+- SOCKS host: 127.0.0.1
+- port: 1987
+- select "SOCKSv5"
+- select "proxy DNS when using SOCKSv5"
 
 verify the connection: open cmd in admin
 netstat /nao | find "1987"
 tasklist | find "16832"                ????cant find the number
-
-type proxy setting in the application
-select SOCKSv5 --> SOCKS host: localhost --> port: 1987
 
 SSH Tunneling on Windows and Linux Tutorial
 https://www.youtube.com/watch?v=s7Zbj-eC1lY
