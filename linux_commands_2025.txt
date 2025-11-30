@@ -149,6 +149,7 @@ rwx 	rwx 	rwx
 7   	6   	6 	(decimal)
 
 # chmod 766 backup.sh
+# chmod 400 ssh-key-2025-11-27.key
 - - - - - - - - - -
 
 Package installation via proxy
