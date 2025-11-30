@@ -2,11 +2,13 @@ https://stackoverflow.com/questions/54156489/docker-hello-world-container-not-vi
 
 https://www.youtube.com/watch?v=SnSH8Ht3MIc
 
-
+docker info
 docker images			          check docker images
+docker search <image>
 docker ps			              check running docker containers
 docker ps -a			          check previousely run docker containers
 docker stats			          stats for running containers
+
 
 docker save dumidu1 > dumidu1.tar	                        save a docker image
 docker load < dumidu1.tar		                              load a docker image
