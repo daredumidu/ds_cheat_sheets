@@ -198,6 +198,8 @@ python3 -V
 # iptables –A INPUT –S 172.17.9.66 –j DROP
 # iptables –p tcp –m tcp –dport 25 –s [ip add.] –j ACCEPT
 
+firewall-cmd --list-all
+
 Add the port to the public zone permanently:
 sudo firewall-cmd --permanent --zone=public --add-port=<port_number>/tcp
 
