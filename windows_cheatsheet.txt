@@ -145,6 +145,9 @@ firefox settings --> network settings
 - select "SOCKSv5"
 - select "proxy DNS when using SOCKSv5"
 
+android SSH tunnelling
+- install connectbot, foxyproxy ext (for firefox), socksdroid (for all apps)
+
 verify the connection: open cmd in admin
 netstat /nao | find "1987"
 tasklist | find "16832"                ????cant find the number
