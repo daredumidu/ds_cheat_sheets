@@ -152,6 +152,8 @@ rwx 	rwx 	rwx
 # chmod 400 ssh-key-2025-11-27.key
 - - - - - - - - - -
 
+dnf install <package name>					Oracle Linux 10 package installation
+
 Package installation via proxy
 sudo rpm -ivh --httpproxy 10.2.185.200:8080 23.2.30-447_illumio-ven-23.2.30-447.el9.x86_64.rpm
 
