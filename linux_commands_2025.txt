@@ -231,4 +231,30 @@ sample:
 0 0 1 * * root backup.sh - every 1st day of the month 12am
 - - - - - - - - - -
 
+= = = = = SSH revrse tunneling = = = = = 
+
+remote server config:
+
+edit sshd config file: vim /etc/ssh/sshd_config
+	AllowTcpForwarding yes
+	GatewayPorts yes
+
+systemctl restart sshd
+
+open firewall ports in the server. Makes sure to open ports in cloud network firewall. 
+firewall-cmd --add-port=8081/tcp --permanent
+firewall-cmd --reload
+
+local server config: 
+
+ssh -f -N -R 0.0.0.0:8081:127.0.0.1:8081 user@remote-server-ip
+	-f → run in background
+	-N → no remote command
+
+test the revese tunnel:
+ss -tulnp | grep 8081
+curl http://localhost:8081
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
 ==========_end_of_note_==========
