@@ -173,6 +173,8 @@ Connect to a remote server
 	# ssh root@192.168.1.1 		login with specific user
 	# ssh –X root@192.168.1.1 	X - graphical configuration tools
 
+ssh -i '<private-key-file.key>' username@remote-server-ip 			login using a private key
+
 Copy a file through ssh
 	# scp [user]@[destination pc ip add.]: [source file] [destination]
 	# scp root@192.168.1.1: /home/allusers/test.txt /home/allusers
