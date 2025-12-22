@@ -418,10 +418,19 @@ dictionary attack on cap file
 aircrack-ng <cap file> -w <dictionary>
 ===============
 
+https://cisofy.com/downloads/lynis/
+https://cisofy.com/faq/can-lynis-create-a-html-report/
+
 wget https://downloads.cisofy.com/lynis/lynis-2.7.4.tar.gz
 tar xvzf lynis.tar.gz
 go to lynis folder, open terminal, run as root
 ./lynis audit system
+
+scan os
+./lynis audit system | ansi2html -la > audit_report1.html
+
+scan dockerfile
+./lynis audit dockerfile /root/ds/dockerfile | ansi2html -la > audit_report2.html
 
 ./lynis audit dockerfile <file name>
 ./lynis show version
