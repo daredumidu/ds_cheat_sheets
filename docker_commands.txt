@@ -61,3 +61,46 @@ docker compose up -d                        run the container
 docker compose ps
 docker compose ps -a
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+https://github.com/docker/docker-bench-security
+
+docker compose run --rm docker-bench-security | ansi2html -la > docker_bench_report.html
+
+(require ansible to run the command. refer to lynis installtion)
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+https://hub.docker.com/_/registry
+https://stackoverflow.com/questions/25436742/how-to-delete-images-from-a-private-docker-registry
+https://dev.to/iamrj846/how-to-delete-images-from-a-private-docker-registry-28do
+
+/etc/distribution/config.yml
+
+docker pull registry
+running details in docker compose yaml file
+
+docker tag hello-world localhost:5000/hello-world
+docker push localhost:5000/hello-world
+
+docker pull localhost:5000/hello-world
+
+http://192.168.0.201:5000/
+http://192.168.0.201:5000/v2/_catalog
+http://192.168.0.201:5000/v2/httpd/tags/list
+http://192.168.0.201:5000/v2/img_dumidu_apache/manifests/latest
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+https://hub.docker.com/repositories/daredumidu
+
+docker login -u daredumidu
+docker logout localhost:8080
+docker logout daredumidu
+
+docker tag <local-image> <username/target-image:tag>
+docker tag img_dumidu_apache:latest daredumidu/img_dumidu_apache:latest
+
+docker push daredumidu/img_dumidu_apache:latest
+
+docker pull daredumidu/img_ds_https_apache:20251211_192504
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+
