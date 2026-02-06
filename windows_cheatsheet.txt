@@ -187,6 +187,13 @@ GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}
 https://www.techrepublic.com/article/how-to-use-god-mode-in-windows-10/?ftag=TREe09998f&bhid=27663049538559910110089906359382
 - - - - - - - - - - - - - - - - -
 
+scan for system file integrity
+
+sfc /scannow
+
+DISM.exe /Online /Cleanup-Image /RestoreHealth
+- - - - - - - - - - - - - - - - -
+
 disable remote file access
 
 regedit
