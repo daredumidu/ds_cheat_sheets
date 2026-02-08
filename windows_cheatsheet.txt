@@ -194,7 +194,7 @@ sfc /scannow
 DISM.exe /Online /Cleanup-Image /RestoreHealth
 - - - - - - - - - - - - - - - - -
 
-Remove Win11 Game Bar
+Remove Win11 Game Bar. open powershell, run as admin
 
 Get-AppxPackage *Microsoft.XboxGamingOverlay* | Remove-AppPackage
 - - - - - - - - - - - - - - - - -
