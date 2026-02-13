@@ -65,6 +65,9 @@ useradd <username> 			add a new user to the system
 passwd <username>			change the password of the user
 passwd -d <username> 		deletes the password
 userdel -r <username>
+
+Prevent ssh login. copy this line to /home/<username>/.ssh/authorized_keys
+no-port-forwarding,no-agent-forwarding,no-X11-forwarding,command="echo 'Please login as the user \"opc\" rather than the user \"root\".';echo;sleep 10;exit 142"
 - - - - - - - - - -
 
 DNS
