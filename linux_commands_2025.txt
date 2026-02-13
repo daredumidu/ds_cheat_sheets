@@ -61,7 +61,10 @@ view the file | filter command
 # cat /etc/passwd | grep student
 - - - - - - - - - -
 
-# cat /etc/passwd          	user list
+cat /etc/passwd          	user list
+grep <username> /etc/passwd
+useradd <username>
+userdel -r <username>
 - - - - - - - - - -
 
 DNS
