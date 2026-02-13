@@ -21,8 +21,6 @@ Linux commands
 # whoami			present user
 # pwd 				present working directory
 # whereis 			to find where a command (or its man pages) is located
-# useradd 			add a new user to the system
-# passwd 			change the password of the user
 # date
 
 OS version:
@@ -63,7 +61,9 @@ view the file | filter command
 
 cat /etc/passwd          	user list
 grep <username> /etc/passwd
-useradd <username>
+useradd <username> 			add a new user to the system
+passwd <username>			change the password of the user
+passwd -d <username> 		deletes the password
 userdel -r <username>
 - - - - - - - - - -
 
