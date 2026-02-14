@@ -170,10 +170,6 @@ uninstall
 sudo rpm -e illumio-ven-23.2.30-447.el9.x86_64
 - - - - - - - - - -
 
-SSH to another host
-	ssh -l admin 192.168.1.122
-- - - - - - - - - -
-
 Connect to a remote server
 	# ssh 192.168.1.1 		login with the current user
 	# ssh root@192.168.1.1 		login with specific user
