@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+<div class="mermaid">
+graph TD
+    A[Bare Metal Servers<br/>1990s-2000s] --> B[Virtualization<br/>VMware, Hyper-V<br/>Mid 2000s]
+    A --> A2[SAN/NAS Storage<br/>Late 1990s]
+    
+    B --> C[Cloud Computing<br/>AWS, Azure, GCP<br/>Late 2000s]
+    B --> B2[Configuration Management<br/>Puppet, Chef<br/>2005-2010]
+    
+    C --> C2[Platform-as-a-Service<br/>Heroku, Cloud Foundry<br/>2007+]
+    C --> D[Infrastructure as Code<br/>Terraform, CloudFormation<br/>2011-2014]
+    C --> E[Containers<br/>Docker<br/>2013+]
+    C --> C3[Object Storage<br/>S3, Blob Storage<br/>2006+]
+    
+    B2 --> B3[Modern Config Mgmt<br/>Ansible<br/>2012+]
+    
+    E --> F[Container Orchestration<br/>Kubernetes<br/>2014+]
+    E --> E2[Container Storage<br/>Persistent Volumes, CSI<br/>2017+]
+    
+    D -.-> F
+    B3 -.-> F
+    
+    F --> F2[Service Mesh<br/>Istio, Linkerd<br/>2017+]
+    F --> F3[GitOps<br/>Flux, ArgoCD<br/>2017+]
+    
+    C --> G[Serverless/FaaS<br/>Lambda, Cloud Functions<br/>2014+]
+    
+    C --> H[Monitoring Evolution<br/>Prometheus, Grafana<br/>2012+]
+    F --> H2[Observability<br/>OpenTelemetry<br/>2019+]
+    
+    C --> I[Software-Defined Networking<br/>2010s]
+    I -.-> F2
+    
+    F --> J[Edge Computing<br/>IoT, CDN Edge<br/>2015+]
+    G --> J
+    
+    J --> K[Emerging Tech<br/>WebAssembly, eBPF<br/>2020+]
+    F --> K
+    
+    style A fill:#ff9999,stroke:#333,stroke-width:2px,color:#000
+    style B fill:#ffcc99,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#ffff99,stroke:#333,stroke-width:2px,color:#000
+    style D fill:#99ccff,stroke:#333,stroke-width:2px,color:#000
+    style E fill:#99ff99,stroke:#333,stroke-width:2px,color:#000
+    style F fill:#cc99ff,stroke:#333,stroke-width:2px,color:#000
+    style G fill:#ff99cc,stroke:#333,stroke-width:2px,color:#000
+    style K fill:#99ffff,stroke:#333,stroke-width:2px,color:#000
+    
+    style A2 fill:#ffe6e6,stroke:#333,color:#000
+    style B2 fill:#fff0e6,stroke:#333,color:#000
+    style B3 fill:#fff0e6,stroke:#333,color:#000
+    style C2 fill:#ffffcc,stroke:#333,color:#000
+    style C3 fill:#ffffcc,stroke:#333,color:#000
+    style E2 fill:#e6ffe6,stroke:#333,color:#000
+    style F2 fill:#f0e6ff,stroke:#333,color:#000
+    style F3 fill:#f0e6ff,stroke:#333,color:#000
+    style H fill:#ffe6f0,stroke:#333,color:#000
+    style H2 fill:#ffe6f0,stroke:#333,color:#000
+    style I fill:#e6f3ff,stroke:#333,color:#000
+    style J fill:#ffebe6,stroke:#333,color:#000
+</div>
+</body>
+</html>
