@@ -14,6 +14,9 @@ apt autoremove
 apt-get clean   (clear var/cache/apt/archives)
 = = = = = = = = = = = = = = = 
 
+view html source in browser
+view-source:<url>
+
 open an application: firefox &
 - - - - - - - - - -
 listing hidden files --> ls -al
