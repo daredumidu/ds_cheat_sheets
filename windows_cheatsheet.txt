@@ -16,6 +16,11 @@ clear run command history
 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
 - - - - - - - - - - - - - - - 
 
+see installed programs in file explorer. use command in "run" or address bar in file explorer,
+
+shell:appsfolder
+- - - - - - - - - - - - - - - 
+
 How to Decrypt Encrypted Windows Files
 
 http://www.online-tech-tips.com/computer-tips/decrypt-encrypted-xp-files/
