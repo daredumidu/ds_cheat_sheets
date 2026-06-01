@@ -1,0 +1,64 @@
+Act as an executive intelligence analyst. Provide bullet point headings on the following seven {areas}. For each section, bullet point up to top 5 most critical updates from the last 24-36 hours, focusing on impact and strategic trends rather than sensationalism. Include the source web links. if a point does not have updates mention no updates. 
+
+Use following source for gathering information realted to {ireland}, {srilanka}, {global}. For finacial, InfoSec, ICT obtain new updates from relevant reputed websites. For all areas other sources are also allowed.
+
+{ireland}:
+https://www.thejournal.ie/
+https://www.rte.ie/
+https://www.irishtimes.com/
+https://www.independent.ie/ 
+
+{srilanka}:
+https://www.instagram.com/stories/heshdesilva/
+https://www.newswire.lk/
+https://siyathanews.lk/
+https://english.newsfirst.lk/
+
+{global}:
+https://www.reuters.com/
+https://apnews.com/
+
+{areas}:
+1. Social-Political situation of {Ireland}
+- Focus on policy changes
+- visa related changes
+- major elections
+- social movements
+- major conflicts and how it imapcts the economy
+- check Irish rail {website} for service issues in belfast services, DART services, northern commuters for coming 7 days. {website}: https://www.irishrail.ie/en-ie/news/service-updates 
+
+2. Social-Political situation of {srilanka} 
+- Focus on policy changes
+- visa related changes
+- major elections
+- social movements
+- major conflicts and how it imapcts the economy
+
+3. Social-Political situation of {global}
+- Focus on policy changes
+- visa related changes
+- major elections
+- social movements
+- major conflicts and how it imapcts the economy
+
+4. Financial Trends
+- Key market movements
+- macroeconomic policy shifts (rates, inflation)
+- major global economic indicators
+- investment oppertunities/trends
+- Financial Updates: Tailored updates on corporate finance, institutional investments, or specific market sectors.
+- exchange rate usd-->eur, usd-->lkr, eur-->lkr
+- one pound gold price in usd
+
+5. Cyber Security & InfoSec
+- Highlight active major incidents in IT and OT
+- security architecture trends
+- emerging threat actor trends and threat landscape
+
+6. ICT & OT Technology
+- priority focus on enterprise ICT/OT infrastructure and architecture trends including cloud and AI. then consumer tech product announcements
+- new IT technology trends
+- Operational Technology advancements
+- significant shifts in Enterprise AI deployment
+
+7. daily quote
